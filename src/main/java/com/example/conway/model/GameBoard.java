@@ -44,9 +44,15 @@ public class GameBoard {
         this.columns = columns;
     }
 
-    private void countCellNeighbors(){
-        for (int i = r - 1; i <= r + 1; i++) {
-            for (j = c - 1; j <= c + 1; j++)
+    private void countCellNeighbors(int x ,int y){
+    int aliveNeighbors = 0;
+    Cell givenCell = grid[x][y];
+        for (int i = x - 1; i <= x + 1; i++) {
+            for (int j = y - 1; j <= y + 1; j++){
+
+            }
+
+            }
 
         }
 
