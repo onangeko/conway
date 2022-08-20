@@ -5,15 +5,15 @@ import java.util.Random;
 
 public class Cell {
     Random random = new Random();
-    private boolean isAlive = random.nextBoolean();
+    private boolean state = random.nextBoolean();
     private int aliveNeighbors = 0;
 
     public boolean isAlive() {
-        return isAlive;
+        return state;
     }
 
-    public void setAlive(boolean alive) {
-        isAlive = true;
+    public void setState(boolean state) {
+        this.state =state;
     }
 
     public int getAliveNeighbors() {

@@ -52,17 +52,17 @@ public class GameBoard {
     Cell givenCell = grid[x][y];
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++){
-                if (grid[i][y].isAlive()){
-                    aliveNeighbors++;
+                if (i >= 0 && i < columns && j>=0 && j <rows){
+                    if (grid[i][j].isAlive() && grid[i][j]!=grid[x][y]){
+                        aliveNeighbors++;
+                    }
                 }
             }
         }
-        aliveNeighbors--;
         givenCell.setAliveNeighbors(aliveNeighbors);
-        System.out.println(aliveNeighbors);
     }
 
-    private void updateGrid() {
+    public void updateGrid() {
 
         for (int x = 0; x < rows; x++) {
             for (int y = 0; y < columns; y++) {
@@ -73,12 +73,13 @@ public class GameBoard {
             for (int y = 0; y < columns; y++) {
                 if (grid[x][y].isAlive()) {
                     if (grid[x][y].getAliveNeighbors() < 2 || grid[x][y].getAliveNeighbors() > 3) {
-                        grid[x][y].setAlive(false);
+                        grid[x][y].setState(false);
                     }
-                } else if (grid[x][y].getAliveNeighbors() == 3) {
-                    grid[x][y].setAlive(true);
-                }else{
-                    continue;
+                }
+                if (!grid[x][y].isAlive()){
+                    if (grid[x][y].getAliveNeighbors() == 3) {
+                        grid[x][y].setState(true);
+                    }
                 }
             }
         }
