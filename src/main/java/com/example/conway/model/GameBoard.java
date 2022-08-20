@@ -7,12 +7,15 @@ public class GameBoard {
     private int columns;
 
     public GameBoard(int rows, int columns) {
+        this.setRows(rows);
+        this.setColumns(columns);
         grid  = new Cell[rows][columns];
         for (int y = 0; y < rows; y++) {
             for (int x = 0; x < columns; x++) {
                 grid[y][x] = new Cell();
             }
         }
+        this.setGrid(grid);
 
     }
 
@@ -44,21 +47,45 @@ public class GameBoard {
         this.columns = columns;
     }
 
-    private void countCellNeighbors(int x ,int y){
+    public void countAliveCellNeighbors(int x ,int y){
     int aliveNeighbors = 0;
     Cell givenCell = grid[x][y];
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++){
-
+                if (grid[i][y].isAlive()){
+                    aliveNeighbors++;
+                }
             }
-
-            }
-
         }
-
-    private void updateGrid(){
-
+        aliveNeighbors--;
+        givenCell.setAliveNeighbors(aliveNeighbors);
+        System.out.println(aliveNeighbors);
     }
+
+    private void updateGrid() {
+
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < columns; y++) {
+                countAliveCellNeighbors(x, y);
+            }
+        }
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < columns; y++) {
+                if (grid[x][y].isAlive()) {
+                    if (grid[x][y].getAliveNeighbors() < 2 || grid[x][y].getAliveNeighbors() > 3) {
+                        grid[x][y].setAlive(false);
+                    }
+                } else if (grid[x][y].getAliveNeighbors() == 3) {
+                    grid[x][y].setAlive(true);
+                }else{
+                    continue;
+                }
+            }
+        }
+    }
+
+
+
 
 
 

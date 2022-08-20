@@ -9,5 +9,4 @@ module com.example.conway {
     requires com.almasb.fxgl.all;
 
     opens com.example.conway to javafx.fxml;
-    exports com.example.conway;
 }

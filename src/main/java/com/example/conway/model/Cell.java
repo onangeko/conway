@@ -1,23 +1,27 @@
 package com.example.conway.model;
 
+import java.util.Random;
+
+
 public class Cell {
-    private boolean isAlive = true;
-    private int neighbors = 0;
+    Random random = new Random();
+    private boolean isAlive = random.nextBoolean();
+    private int aliveNeighbors = 0;
 
     public boolean isAlive() {
         return isAlive;
     }
 
     public void setAlive(boolean alive) {
-        isAlive = alive;
+        isAlive = true;
     }
 
-    public int getNeighbors() {
-        return neighbors;
+    public int getAliveNeighbors() {
+        return aliveNeighbors;
     }
 
-    public void setNeighbors(int neighbors) {
-        this.neighbors = neighbors;
+    public void setAliveNeighbors(int neighbors) {
+        this.aliveNeighbors = neighbors;
     }
 
 
