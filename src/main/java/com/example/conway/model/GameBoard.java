@@ -27,6 +27,10 @@ public class GameBoard {
         this.grid = grid;
     }
 
+    public void set(int i, int j, Cell cell) {
+        grid[j][i] = cell;
+    }
+
     public int getRows() {
         return rows;
     }
