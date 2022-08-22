@@ -6,6 +6,7 @@ public class GameBoard {
     private int rows;
     private int columns;
 
+    //initialize a 2D array and fill it with cell object
     public GameBoard(int rows, int columns) {
         this.setRows(rows);
         this.setColumns(columns);
@@ -54,10 +55,10 @@ public class GameBoard {
     public void countAliveCellNeighbors(int x ,int y){
     int aliveNeighbors = 0;
     Cell givenCell = grid[x][y];
-        for (int i = x - 1; i <= x + 1; i++) {
+        for (int i = x - 1; i <= x + 1; i++) { // for a given cell, we loop through each cell of the neighbourhood
             for (int j = y - 1; j <= y + 1; j++){
                 if (i >= 0 && i < columns && j>=0 && j <rows){
-                    if (grid[i][j].isAlive() && grid[i][j]!=grid[x][y]){
+                    if (grid[i][j].isAlive() && grid[i][j]!=grid[x][y]){ // we do not count the given cell,and we are careful not to be out of bounds
                         aliveNeighbors++;
                     }
                 }
@@ -67,12 +68,14 @@ public class GameBoard {
     }
 
     public void updateGrid() {
-
         for (int x = 0; x < rows; x++) {
             for (int y = 0; y < columns; y++) {
                 countAliveCellNeighbors(x, y);
             }
         }
+        //any live cell with two or three live neighbours survives
+        //any dead cell with three live neighbours becomes a live cell.
+        //all other live cells die in the next generation and the dead ones stay dead
         for (int x = 0; x < rows; x++) {
             for (int y = 0; y < columns; y++) {
                 if (grid[x][y].isAlive()) {

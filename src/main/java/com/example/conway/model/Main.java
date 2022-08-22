@@ -1,6 +1,5 @@
 package com.example.conway.model;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,7 +17,6 @@ public class Main extends Application {
         stage.show();
         gameBoardView.buildAndSetGameLoop();
         gameBoardView.start();
-
     }
 
 
