@@ -10,6 +10,7 @@
 # Project
 Since I am used to code 2D board game that are very similar to GOL , I chose a OOP approach using Java and JavaFX as GUI
 I also considered using python and pygame, but I am a Java nerd.
+I used IntelliJ.
 
 
 # Approach
