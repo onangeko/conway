@@ -3,7 +3,6 @@ package view;
 import model.GameBoard;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.BorderPane;
-
 import java.util.concurrent.TimeUnit;
 
 public class GameBoardView extends BorderPane {
