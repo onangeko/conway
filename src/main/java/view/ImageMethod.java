@@ -1,6 +1,6 @@
 package view;
 
-import com.example.conway.model.Cell;
+import model.Cell;
 import javafx.scene.image.Image;
 
 public class ImageMethod {

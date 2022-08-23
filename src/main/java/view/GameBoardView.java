@@ -1,10 +1,8 @@
 package view;
 
-import com.example.conway.model.GameBoard;
+import model.GameBoard;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.BorderPane;
-
-import javafx.stage.Stage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,8 +11,8 @@ public class GameBoardView extends BorderPane {
     private final GameBoard Board;
     public AnimationTimer gameLoop;
 
-    public GameBoardView(Stage stage) {
-        this.Board = new GameBoard(3, 3);
+    public GameBoardView() {
+        this.Board = new GameBoard(15, 15); //default size is 15x15
         setPrefSize(Board.getRows() * ImageSize,
                 Board.getColumns() * ImageSize);
         for (int i = 0; i < this.Board.getRows(); i++) {
@@ -24,14 +22,14 @@ public class GameBoardView extends BorderPane {
         }
     }
 
-    private void createCellView(int i, int j) {
+    private void createCellView(int i, int j) { // create a render for each cell
         int layoutX = i * ImageSize;
         int layoutY = j * ImageSize;
         CellView cellView = new CellView(ImageMethod.ImageFromCell(this.Board.getCell(i,j)), layoutX, layoutY);
         getChildren().add(cellView);
     }
 
-    private void update() {
+    private void update() { //handle the graphic update
         for (int i = 0; i < this.Board.getRows(); i++) {
             for (int j = 0; j < this.Board.getColumns(); j++) {
                 getChildren().remove(Board.getCell(i,j));
@@ -40,12 +38,14 @@ public class GameBoardView extends BorderPane {
         }
     }
 
-    public void buildAndSetGameLoop() {
+    public void buildAndSetGameLoop() { //
         gameLoop = new AnimationTimer() {
             private long lastUpdate = 0;
-            public void handle(long now) {
+            public void handle(long now) { // updates happens once every seconds
                 if ((now - lastUpdate) >= TimeUnit.MILLISECONDS.toNanos(500)) {
+                    // do actions
                     Board.updateGrid();
+                    //graphic update
                     update();
                     lastUpdate = now;
                 }

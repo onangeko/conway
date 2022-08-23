@@ -1,4 +1,4 @@
-package com.example.conway.model;
+package model;
 
 public class GameBoard {
 

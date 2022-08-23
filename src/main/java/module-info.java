@@ -1,5 +1,5 @@
-module com.example.conway {
+module model {
     requires javafx.graphics;
 
-    exports com.example.conway.model to javafx.graphics;
+    exports model to javafx.graphics;
 }

@@ -1,4 +1,4 @@
-package com.example.conway.model;
+package model;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,7 +9,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage)  {
-        GameBoardView gameBoardView = new GameBoardView(stage);
+        //
+        GameBoardView gameBoardView = new GameBoardView();
         Scene scene = new Scene(gameBoardView);
         stage.setTitle("Conway Game Of Life");
         stage.setScene(scene);
