@@ -17,9 +17,11 @@ public class GameBoard {
             }
         }
         this.setGrid(grid);
-
     }
 
+    public static Cell[][] EmptyGameBoard(int rows, int columns) {
+        return new Cell[rows][columns];
+    }
     public Cell[][] getGrid() {
         return grid;
     }
@@ -75,7 +77,7 @@ public class GameBoard {
         }
         //any live cell with two or three live neighbours survives
         //any dead cell with three live neighbours becomes a live cell.
-        //all other live cells die in the next generation and the dead ones stay dead
+        //all others live cells die in the next generation and the dead ones stay dead
         for (int x = 0; x < rows; x++) {
             for (int y = 0; y < columns; y++) {
                 if (grid[x][y].isAlive()) {

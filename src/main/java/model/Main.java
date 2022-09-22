@@ -11,13 +11,12 @@ public class Main extends Application {
     public void start(Stage stage)  {
         //
         GameBoardView gameBoardView = new GameBoardView();
-        Scene scene = new Scene(gameBoardView);
+        Scene scene = new Scene(gameBoardView,gameBoardView.getPrefWidth(),gameBoardView.getPrefHeight());
         stage.setTitle("Conway Game Of Life");
         stage.setScene(scene);
         stage.sizeToScene();
+        stage.setResizable(false);
         stage.show();
-        gameBoardView.buildAndSetGameLoop();
-        gameBoardView.start();
     }
 
 
